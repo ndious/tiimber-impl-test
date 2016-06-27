@@ -1,0 +1,28 @@
+version: "2"
+services:
+  nginx:
+    image: bitnami/nginx
+    volumes:
+      - ./vhosts:/bitnami/nginx/conf/vhosts/:ro
+      - ./logs:/var/log/nginx
+      - ./resources:/app/resources
+    links:
+      - phpfpm:tiimber
+    ports:
+      - "80:80"
+    depends_on:
+      - "phpfpm"
+  phpfpm:
+    image: bitnami/php-fpm:7.0.6-r0
+    volumes:
+      - ./:/app
+      - ./cache:/tmp/cache:rw
+    links:
+      - "database"
+  database:
+    image: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+      - MYSQL_DATABASE=blog

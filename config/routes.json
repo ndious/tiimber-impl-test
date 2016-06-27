@@ -1,0 +1,14 @@
+{
+  "index": {
+    "route": "/"
+  },
+  "article::index": {
+    "route": "/articles"
+  },
+  "article::show": {
+    "route": "/{id}",
+    "params": {
+      "id": ".+"
+    }
+  }
+}
