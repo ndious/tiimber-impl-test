@@ -10,7 +10,7 @@ class UserAuthView extends View
     'request::index' => 'login'
   ];
 
-  const TPL = <<<'EOS'
+  const TPL = <<<EOF
 {{#user}}
   <b>Hello {{username}}!</b>
 {{/user}}
@@ -20,7 +20,7 @@ class UserAuthView extends View
     <button type="submit">Submit</button>
   </form>
 {{/user}}
-EOS;
+EOF;
 
   private $user;
 

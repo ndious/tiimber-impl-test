@@ -4,7 +4,6 @@ namespace Blog\Views\Articles;
 use Tiimber\View;
 use Tiimber\ViewException;
 use Tiimber\Session;
-use Tiimber\Traits\RedirectTrait;
 
 use RedBeanPHP\R;
 
@@ -12,7 +11,6 @@ use Blog\Entities\Article;
 
 class ShowView extends View
 {
-  use RedirectTrait;
 
   const EVENTS = [
     'request::article::show' => 'content'
@@ -47,18 +45,6 @@ EOF;
   public function onGet($request, $args)
   {
     $this->prepare((integer)$args['id']);
-  }
-  
-  public function onPost($request, $args)
-  {
-    $this->prepare((integer)$args['id']);
-
-    $this->article->title = $request->post->get('title');
-    $this->article->content = $request->post->get('content');
-    $this->article->status = true;
-
-    $id = R::store($this->article);
-    $this->redirect('/'.$id);
   }
 
   public function render()
