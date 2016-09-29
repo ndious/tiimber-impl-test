@@ -2,8 +2,9 @@
 namespace Blog\Views\Articles;
 
 use Tiimber\View;
-use Tiimber\Database;
 use Tiimber\Utilities\Text;
+
+use RedBeanPHP\R;
 
 class IndexView extends View
 {
@@ -11,9 +12,9 @@ class IndexView extends View
     'request::article::index' => 'content'
   ];
 
-  const TPL = <<<TPL
+  const TPL = <<<EOF
 <ul>
-  {{#article}}
+  {{#articles}}
     <li>
       <h2>{{title}}<h2>
       <p>
@@ -24,21 +25,16 @@ class IndexView extends View
         </a>
       </p>
     </li>
-  {{/article}}
-  {{^article}}
+  {{/articles}}
+  {{^articles}}
     <li>No article available yet.</li>
-  {{/article}}
+  {{/articles}}
 </ul>
-TPL;
+EOF;
 
   public function render()
   {
-    $mapper = Database::getMapper('Blog\Entities\Article');
-    $truncate = function () {
-      return function ($text) {
-        return Text::crop($text, 50);
-      };
-    };
-    return ['article' => $mapper->all()->limit(10)->toArray(), 'truncate' => $truncate];
+    $articles = R::findAll('article','ORDER BY id DESC LIMIT 10');
+    return ['articles' => array_values($articles)];
   }
 }

@@ -1,7 +1,8 @@
 {
   "require": {
     "ndufreche/tiimber": "dev-road-2-v1",
-    "mustache/mustache": "^2.10"
+    "mustache/mustache": "^2.10",
+    "gabordemooij/redbean": "dev-master"
   },
   "require-dev": {
     "ndufreche/tiimber-cli": "dev-master"
@@ -11,5 +12,4 @@
       "Blog\\": "Blog/"
     }
   }
-
 }

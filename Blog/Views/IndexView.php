@@ -10,8 +10,8 @@ class IndexView extends View
   ];
 
   const TPL = <<<'EOS'
-hello {{planet}}.
-<a href="/">test</a>
+<p>hello {{planet}}.</p>
+<a href="/new">New article</a>
 EOS;
 
   public function render()
