@@ -9,10 +9,9 @@ class IndexView extends View
     'request::index' => 'content'
   ];
 
-  const TPL = <<<'EOS'
+  const TPL = <<<EOF
 <p>hello {{planet}}.</p>
-<a href="/new">New article</a>
-EOS;
+EOF;
 
   public function render()
   {

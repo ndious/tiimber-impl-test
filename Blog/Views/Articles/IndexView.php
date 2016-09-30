@@ -13,10 +13,10 @@ class IndexView extends View
   ];
 
   const TPL = <<<EOF
-<ul>
-  {{#articles}}
+{{#articles}}
+  <ul>
     <li>
-      <h2>{{title}}<h2>
+      <h2>{{title}}</h2>
       <p>
         <a href="/{{id}}">
           {{#truncate}}
@@ -25,11 +25,11 @@ class IndexView extends View
         </a>
       </p>
     </li>
-  {{/articles}}
-  {{^articles}}
-    <li>No article available yet.</li>
-  {{/articles}}
-</ul>
+  </ul>
+{{/articles}}
+{{^articles}}
+  <p>No article available yet.</p>
+{{/articles}}
 EOF;
 
   public function render()

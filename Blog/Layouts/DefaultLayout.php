@@ -13,14 +13,16 @@ class DefaultLayout extends Layout
     <title>{{title}}</title>
   </head>
   <body>
-    {{{content}}}
-    <p>
-      {{{login}}}
-    </p>
+    <header>
+      {{{navigation}}}
+    </header>
+    <div>
+      {{{content}}}
+      <p>
+        {{{login}}}
+      </p>
+    </div>
   </body>
-  <script>
-
-  </script>
 </html>
 EOS;
 

@@ -20,9 +20,9 @@ class ShowView extends View
 {{#user}}
   <form method="post">
     <input type="hidden" name="id" value="{{article.id}}">
-    <input type="text" name="title" placeholder="Title" value="{{article.title}}">
-    <textarea name="content">{{article.content}}</textarea>
-    <button type="submit">Submit</button>
+    <p><input type="text" name="title" placeholder="Title" value="{{article.title}}"></p>
+    <p><textarea name="content">{{article.content}}</textarea></p>
+    <p><button type="submit">Submit</button></p>
   </form>
 {{/user}}
 {{^user}}
@@ -32,19 +32,10 @@ class ShowView extends View
 EOF;
 
   private $article;
-  
-  public function prepare($id)
-  {
-    if ($id !== 0) {
-      $this->article = R::load('article', $id);
-    } else {
-      $this->article = R::dispense('article');
-    }
-  }
 
   public function onGet($request, $args)
   {
-    $this->prepare((integer)$args['id']);
+    $this->article = R::load('article', (integer)$args['id']);
   }
 
   public function render()
