@@ -6,9 +6,15 @@
     "route": "/articles"
   },
   "article::show": {
-    "route": "/{id}",
+    "route": "/article/{id}",
     "params": {
       "id": ".+"
     }
+  },
+  "user::auth": {
+    "route": "/user/auth"
+  },
+  "favicon": {
+    "route": "/favicon.ico"
   }
 }

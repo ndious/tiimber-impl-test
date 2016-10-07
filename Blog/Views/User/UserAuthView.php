@@ -1,13 +1,12 @@
 <?php
 namespace Blog\Views\User;
 
-use Tiimber\View;
-use Tiimber\Session;
+use Tiimber\{View, Session};
 
 class UserAuthView extends View
 {
   const EVENTS = [
-    'request::index' => 'login'
+    'render::navigation' => 'login'
   ];
 
   const TPL = <<<EOF
@@ -15,30 +14,18 @@ class UserAuthView extends View
   <b>Hello {{username}}!</b>
 {{/user}}
 {{^user}}
-  <form method="post" action="/">
+  <form method="post" action="/user/auth">
     <input type="text" name="username" placeholder="Username">
     <button type="submit">Submit</button>
   </form>
 {{/user}}
 EOF;
 
-  private $user;
-
-  public function onGet($request, $args)
-  {
-    if (Session::load()->has('user')) {
-      $this->user = ['username' => Session::load()->get('user')];
-    }
-  }
-
-  public function onPost($request, $args)
-  {
-    Session::load()->set('user', $request->post->get('username'));
-    $this->user = ['username' => $request->post->get('username')];
-  }
-
   public function render()
   {
-    return ['user' => $this->user];
+    return [
+      'user' => Session::load()->has('user'),
+      'username' => Session::load()->get('user')
+    ];
   }
 }

@@ -33,6 +33,6 @@ class SaveAction extends Action
     $this->article->status = true;
 
     $id = R::store($this->article);
-    $this->redirect('/'.$id);
+    $this->redirect('/article/'.$id);
   }
 }

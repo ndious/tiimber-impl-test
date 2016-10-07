@@ -18,9 +18,6 @@ class DefaultLayout extends Layout
     </header>
     <div>
       {{{content}}}
-      <p>
-        {{{login}}}
-      </p>
     </div>
   </body>
 </html>

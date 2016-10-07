@@ -2,7 +2,8 @@
   "require": {
     "ndufreche/tiimber": "dev-road-2-v1",
     "mustache/mustache": "^2.10",
-    "gabordemooij/redbean": "dev-master"
+    "gabordemooij/redbean": "dev-master",
+    "react/react": "^0.4.2"
   },
   "require-dev": {
     "ndufreche/tiimber-cli": "dev-master"

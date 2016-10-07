@@ -2,12 +2,10 @@
 namespace Blog\Views\Articles;
 
 use Tiimber\View;
-use Tiimber\ViewException;
+use Tiimber\Exceptions\ViewException;
 use Tiimber\Session;
 
 use RedBeanPHP\R;
-
-use Blog\Entities\Article;
 
 class ShowView extends View
 {
